@@ -671,6 +671,10 @@ def attention_layer(from_tensor,
       activation=query_act,
       name="query",
       kernel_initializer=create_initializer(initializer_range))
+  """
+  it seems that the implementation is a little different from the paper
+  since tf.layers.dense also contains a bias term
+  """
 
   # `key_layer` = [B*T, N*H]
   key_layer = tf.layers.dense(
